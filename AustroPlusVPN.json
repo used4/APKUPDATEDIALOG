@@ -23,8 +23,8 @@
     "url": "https://t.me/hiiq3"
   },
   "colors": {
-    "bgStart": "#0A0F1E",
-    "bgEnd": "#1E293B",
+    "bgStart": "#121212",
+    "bgEnd": "#FF0000",
     "border": "#3B82F6",
     "accent": "#06B6D4",
     "highlight": "#A855F7",
