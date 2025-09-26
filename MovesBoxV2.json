@@ -23,9 +23,9 @@
     "url": "https://t.me/hiiq3"
   },
   "colors": {
-    "bgStart": "#0A0F1E",
-    "bgEnd": "#1E293B",
-    "border": "#3B82F6",
+    "bgStart": "#121212",
+    "bgEnd": "#310062",
+    "border": "#F0F8FF",
     "accent": "#06B6D4",
     "highlight": "#A855F7",
     "muted": "#64748B",
