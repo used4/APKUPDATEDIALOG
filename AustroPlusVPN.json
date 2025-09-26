@@ -24,8 +24,8 @@
   },
   "colors": {
     "bgStart": "#121212",
-    "bgEnd": "#800020",
-    "border": "#3B82F6",
+    "bgEnd": "#310062",
+    "border": "#F0F8FF",
     "accent": "#06B6D4",
     "highlight": "#A855F7",
     "muted": "#64748B",
