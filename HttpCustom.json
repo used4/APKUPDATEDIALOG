@@ -1,0 +1,38 @@
+{
+  "show": true,
+  "title": "𝙃𝙩𝙩𝙥 𝘾𝙪𝙨𝙩𝙤𝙢",
+  "version": "9",
+  "headline": "⚠️ 𝗠𝗼𝗱 𝗕𝘆 𝗔𝗣𝗞 𝗘𝗗𝗜𝗧𝗢𝗥 𝗠𝗔𝗦𝗧𝗘𝗥 ⚠️",
+  "description": "𝗝𝗼𝗶𝗻 𝘁𝗵𝗲 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 ",
+  "force": false,
+  "minVersion": "",
+  "credit": "hiqq3",
+  "features": [
+    "• 𝗥𝗲𝗺𝗼𝘃𝗲 𝗔𝗱𝘀✨",
+    "• 𝗨𝗻𝗹𝗶𝗺𝗶𝘁𝗲𝗱 𝗧𝗶𝗺𝗲 ⏱️",
+    "• 𝗳𝗼𝗿𝗰𝗲 𝗦𝘁𝗼𝗽 𝗧𝗶𝗺𝗲𝗿 🕓",
+    "• 𝗖𝗼𝗻𝗻𝗲𝗰𝘁 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 🚀"
+  ],
+  "trial": {
+    "enabled": true,
+    "text": "𝗖𝗮𝗻𝗰𝗲𝗹",
+    "minutes": 1
+  },
+  "update": {
+    "text": "𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗖𝗵𝗮𝗻𝗻𝗲𝗹",
+    "url": "https://t.me/hiiq3"
+  },
+  "colors": {
+    "bgStart": "#121212",
+    "bgEnd": "#310062",
+    "border": "#F0F8FF",
+    "accent": "#06B6D4",
+    "highlight": "#A855F7",
+    "muted": "#64748B",
+    "divider": "#334155",
+    "textPrimary": "#E0F2FE",
+    "textSecondary": "#93C5FD",
+    "buttonTrial": "#475569",
+    "buttonUpdate": "#2563EB"
+  }
+}
