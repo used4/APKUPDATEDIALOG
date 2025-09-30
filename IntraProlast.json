@@ -1,0 +1,38 @@
+{
+  "show": true,
+  "title": "𝙄𝙣𝙧𝙖 𝙋𝙍𝙊",
+  "version": "9",
+  "headline": "⚠️ 𝗠𝗼𝗱 𝗕𝘆 𝗔𝗣𝗞 𝗘𝗗𝗜𝗧𝗢𝗥 𝗠𝗔𝗦𝗧𝗘𝗥 ⚠️",
+  "description": "𝗝𝗼𝗶𝗻 𝘁𝗵𝗲 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 ",
+  "force": false,
+  "minVersion": "",
+  "credit": "hiqq3",
+  "features": [
+    "• 𝘼𝙙𝙙 𝙏𝙞𝙢𝙚𝙧✨",
+    "• 𝙔𝙤𝙪 𝙘𝙖𝙣 𝙘𝙤𝙣𝙩𝙧𝙤𝙡 𝙩𝙝𝙚 𝙩𝙞𝙢𝙚𝙧. ⏱️",
+    "• 𝙄𝙩 𝙞𝙨 𝙗𝙚𝙩𝙩𝙚𝙧 𝙩𝙤 𝙨𝙚𝙩 𝙩𝙝𝙚 𝙩𝙞𝙢𝙚𝙧 𝙖𝙩 22 𝙨𝙚𝙘𝙤𝙣𝙙𝙨 𝙛𝙤𝙧 𝙩𝙝𝙚 𝙗𝙚𝙨𝙩 𝙘𝙤𝙣𝙣𝙚𝙘𝙩𝙞𝙤𝙣. 🕓",
+    "• 𝗖𝗼𝗻𝗻𝗲𝗰𝘁 𝗦𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 🚀"
+  ],
+  "trial": {
+    "enabled": true,
+    "text": "𝗖𝗮𝗻𝗰𝗲𝗹",
+    "minutes": 1
+  },
+  "update": {
+    "text": "𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗖𝗵𝗮𝗻𝗻𝗲𝗹",
+    "url": "https://t.me/hiiq3"
+  },
+  "colors": {
+    "bgStart": "#121212",
+    "bgEnd": "#310062",
+    "border": "#F0F8FF",
+    "accent": "#06B6D4",
+    "highlight": "#A855F7",
+    "muted": "#64748B",
+    "divider": "#334155",
+    "textPrimary": "#E0F2FE",
+    "textSecondary": "#93C5FD",
+    "buttonTrial": "#475569",
+    "buttonUpdate": "#2563EB"
+  }
+}
