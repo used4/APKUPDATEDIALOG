@@ -1,9 +1,9 @@
 {
   "showDialog": true,
-  "title": "Update Available",
-  "message": "An Update is available on your device",
-  "showCloseButton": false,
+  "title": "تحديث",
+  "message": "يتوف، تحديث جديد للتطبيق ، حدث الان !",
+  "showCloseButton": true,
   "UpdateButtonUrl": "https://t.me/hiiq3",
   "showUpdateButton": true,
-  "UpdateButtonText": "Update Your Device"
+  "UpdateButtonText": "تحميل"
 }
