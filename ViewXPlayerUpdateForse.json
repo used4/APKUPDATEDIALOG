@@ -1,5 +1,5 @@
 {
-  "showDialog": true,
+  "showDialog": false,
   "title": "تحديث",
   "message": "يتوف، تحديث جديد للتطبيق ، حدث الان !",
   "showCloseButton": true,
