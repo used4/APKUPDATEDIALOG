@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العبودي TV | مستقبل الترفيه</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00e5ff;
+            --primary-dark: #00a8cc;
+            --primary-light: #6effff;
+            --bg-color: #0a0a1a;
+            --bg-gradient: linear-gradient(135deg, #0a0a1a, #12122e, #1a1a3a);
+            --card-bg: rgba(16, 16, 40, 0.9);
+            --card-hover: rgba(30, 30, 70, 0.95);
+            --text-color: #ffffff;
+            --shadow-color: rgba(0, 229, 255, 0.3);
+            --accent-color: #ff00e5;
+            --accent-color-2: #ff6b00;
+            --header-bg: rgba(10, 10, 26, 0.98);
+            --nav-bg: rgba(10, 10, 26, 0.98);
+            --footer-bg: linear-gradient(90deg, #000000, var(--primary-dark), var(--primary-color));
+            --neon-glow: 0 0 10px var(--primary-color);
+            --glass-effect: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Almarai', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* تأثيرات خلفية مبسطة */
+        .bg-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .grid-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.2;
+        }
+        
+        .header {
+            background: var(--header-bg);
+            padding: 15px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 10;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .animated-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: transparent;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color), var(--accent-color-2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow: var(--neon-glow);
+            margin-bottom: 0;
+            position: relative;
+            display: inline-block;
+            padding: 0 15px;
+            letter-spacing: 1px;
+        }
+        
+        .online-users {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: #00ff00;
+            border-radius: 50%;
+            margin-left: 8px;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        
+        .online-count {
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        /* زر تغيير الألوان - مبسط */
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .theme-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .theme-button:hover {
+            transform: scale(1.05);
+            box-shadow: var(--neon-glow);
+        }
+        
+        .theme-options {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: rgba(10, 10, 26, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+            display: none;
+            flex-wrap: wrap;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--primary-color);
+            width: 180px;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .theme-option {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .theme-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-cyber { background: linear-gradient(45deg, #00e5ff, #ff00e5); }
+        .theme-neon { background: linear-gradient(45deg, #00ff9d, #00b8ff); }
+        .theme-purple { background: linear-gradient(45deg, #8a2be2, #ff00e5); }
+        .theme-gold { background: linear-gradient(45deg, #ffd700, #ff8c00); }
+        
+        /* شاشة الأقسام - ثابتة */
+        .categories-scroll {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            position: relative;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(5px);
+            margin-top: 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .scroll-container {
+            display: inline-flex;
+            padding: 0 20px;
+        }
+        
+        .scroll-item {
+            white-space: nowrap;
+            margin: 0 10px;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: rgba(0, 229, 255, 0.15);
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+        }
+        
+        .scroll-item:nth-child(2n) {
+            background: rgba(255, 0, 229, 0.15);
+            border: 1px solid rgba(255, 0, 229, 0.3);
+        }
+        
+        .scroll-item:nth-child(3n) {
+            background: rgba(255, 107, 0, 0.15);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+        }
+        
+        .scroll-item i {
+            margin-left: 8px;
+            font-size: 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .category {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            position: relative;
+            height: 200px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), var(--neon-glow);
+            background: var(--card-hover);
+        }
+        
+        .category-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .category-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            border-radius: 20px;
+            background: rgba(0, 229, 255, 0.1);
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .category-icon i {
+            color: var(--primary-color);
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .category:hover .category-icon {
+            background: rgba(0, 229, 255, 0.3);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+        
+        .category-title {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+            line-height: 1.4;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .category:hover .category-title {
+            color: var(--primary-light);
+        }
+        
+        /* الشريط السفلي - ثابت */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid var(--glass-border);
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #aaa;
+            text-decoration: none;
+            flex: 1;
+            max-width: 120px;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-item i {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .nav-item span {
+            font-size: 0.8rem;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .nav-item.active, .nav-item:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-item.active::after, .nav-item:hover::after {
+            width: 80%;
+        }
+        
+        .footer {
+            background: var(--footer-bg);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .animated-title {
+                font-size: 1.8rem;
+            }
+            
+            .scroll-item {
+                font-size: 1rem;
+                padding: 8px 15px;
+                margin: 0 8px;
+            }
+            
+            .categories {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            
+            .category {
+                height: 180px;
+            }
+            
+            .category-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .category-title {
+                font-size: 1rem;
+            }
+            
+            .theme-switcher {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .theme-options {
+                width: 160px;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .online-users {
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .animated-title {
+                font-size: 1.5rem;
+            }
+            
+            .scroll-item {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+                margin: 0 5px;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .category {
+                height: 160px;
+            }
+            
+            .category-icon {
+                width: 55px;
+                height: 55px;
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+            
+            .category-title {
+                font-size: 0.95rem;
+            }
+            
+            .theme-options {
+                width: 140px;
+            }
+            
+            .bottom-nav {
+                padding: 10px 0;
+            }
+            
+            .nav-item i {
+                font-size: 1.3rem;
+            }
+            
+            .nav-item span {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-effects">
+        <div class="grid-lines"></div>
+    </div>
+    
+    <div class="theme-switcher">
+        <button class="theme-button" id="themeButton">
+            <i class="fas fa-palette"></i>
+        </button>
+        <div class="theme-options" id="themeOptions">
+            <button class="theme-option theme-cyber" data-theme="cyber"></button>
+            <button class="theme-option theme-neon" data-theme="neon"></button>
+            <button class="theme-option theme-purple" data-theme="purple"></button>
+            <button class="theme-option theme-gold" data-theme="gold"></button>
+        </div>
+    </div>
+    
+    <header class="header">
+        <div class="header-content">
+            <h1 class="animated-title">العبودي TV</h1>
+            <div class="online-users">
+                <span class="online-count" id="onlineCount">5,247</span>
+                <div class="online-dot"></div>
+                <span>مستخدم متصل</span>
+            </div>
+        </div>
+        
+        <div class="categories-scroll">
+            <div class="scroll-container">
+                <div class="scroll-item"><i class="fas fa-tv"></i> قنوات بين سبورت</div>
+                <div class="scroll-item"><i class="fas fa-satellite-dish"></i> قنوات MBC</div>
+                <div class="scroll-item"><i class="fas fa-star"></i> 27 الف قناة</div>
+                <div class="scroll-item"><i class="fas fa-film"></i> قنوات نتفلكس</div>
+                <div class="scroll-item"><i class="fas fa-futbol"></i> قنوات الكأس</div>
+                <div class="scroll-item"><i class="fas fa-satellite"></i> المحطات الفضائية</div>
+                <div class="scroll-item"><i class="fas fa-tv"></i> قنوات الرابعة الرياضية</div>
+                <div class="scroll-item"><i class="fas fa-8"></i> قنوات ثمانيه الرياضية</div>
+                <div class="scroll-item"><i class="fas fa-theater-masks"></i> قسم المسلسلات والافلام المتطور</div>
+                <div class="scroll-item"><i class="fas fa-gamepad"></i> قسم الالعاب والترفية</div>
+                <div class="scroll-item"><i class="fas fa-calendar-alt"></i> جدول المباريات والنتائج</div>
+                <div class="scroll-item"><i class="fas fa-book-quran"></i> القرآن الكريم</div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="categories">
+            <div class="category">
+                <a href="go:Sport" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <span class="category-title">قنوات بين سبورت</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Play" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <span class="category-title">قنوات MBC</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:27" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <span class="category-title">27 الف قناة</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Play Netfl" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <span class="category-title">قنوات نتفلكس</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Sport 2" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <span class="category-title">قنوات الكأس</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:World" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <span class="category-title">المحطات الفضائية</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Sport3" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <span class="category-title">قنوات الرابعة الرياضية</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Sport4" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-8"></i>
+                    </div>
+                    <span class="category-title">قنوات ثمانيه الرياضية</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Mslsl" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <span class="category-title">قسم المسلسلات والافلام المتطور</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Gaming" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <span class="category-title">قسم الالعاب والترفية</span>
+                </a>
+            </div>
+            
+            <div class="category">
+                <a href="go:Quran" class="category-link">
+                    <div class="category-icon">
+                        <i class="fas fa-book-quran"></i>
+                    </div>
+                    <span class="category-title">القرآن الكريم</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="go:Film" class="nav-item active">
+            <i class="fas fa-film"></i>
+            <span>الأفلام المترجمة</span>
+        </a>
+        <a href="go:Gadol" class="nav-item">
+            <i class="fas fa-calendar-alt"></i>
+            <span>جدول المباريات</span>
+        </a>
+    </nav>
+    
+    <footer class="footer">
+        <p>جميع الحقوق محفوظة © تطبيق العبودي TV 2023</p>
+    </footer>
+
+    <script>
+        // التحكم في زر تغيير الألوان
+        const themeButton = document.getElementById('themeButton');
+        const themeOptions = document.getElementById('themeOptions');
+        const themeButtons = document.querySelectorAll('.theme-option');
+
+        // إظهار/إخفاء خيارات الألوان
+        themeButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            themeOptions.style.display = themeOptions.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // إغلاق خيارات الألوان عند النقر خارجها
+        document.addEventListener('click', function() {
+            themeOptions.style.display = 'none';
+        });
+
+        // منع إغلاق الخيارات عند النقر عليها
+        themeOptions.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        // دالة تغيير الثيم
+        function changeTheme(theme) {
+            const root = document.documentElement;
+            
+            switch(theme) {
+                case 'cyber':
+                    root.style.setProperty('--primary-color', '#00e5ff');
+                    root.style.setProperty('--primary-dark', '#00a8cc');
+                    root.style.setProperty('--primary-light', '#6effff');
+                    root.style.setProperty('--accent-color', '#ff00e5');
+                    root.style.setProperty('--accent-color-2', '#ff6b00');
+                    root.style.setProperty('--bg-color', '#0a0a1a');
+                    root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #0a0a1a, #12122e, #1a1a3a)');
+                    root.style.setProperty('--card-bg', 'rgba(16, 16, 40, 0.9)');
+                    root.style.setProperty('--card-hover', 'rgba(30, 30, 70, 0.95)');
+                    root.style.setProperty('--text-color', '#ffffff');
+                    root.style.setProperty('--shadow-color', 'rgba(0, 229, 255, 0.3)');
+                    root.style.setProperty('--header-bg', 'rgba(10, 10, 26, 0.98)');
+                    root.style.setProperty('--nav-bg', 'rgba(10, 10, 26, 0.98)');
+                    root.style.setProperty('--footer-bg', 'linear-gradient(90deg, #000000, #00a8cc, #00e5ff)');
+                    break;
+                case 'neon':
+                    root.style.setProperty('--primary-color', '#00ff9d');
+                    root.style.setProperty('--primary-dark', '#00cc7d');
+                    root.style.setProperty('--primary-light', '#66ffc2');
+                    root.style.setProperty('--accent-color', '#00b8ff');
+                    root.style.setProperty('--accent-color-2', '#ff00cc');
+                    root.style.setProperty('--bg-color', '#0a1a1a');
+                    root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #0a1a1a, #0a2a2a, #0a3a3a)');
+                    root.style.setProperty('--card-bg', 'rgba(16, 40, 40, 0.9)');
+                    root.style.setProperty('--card-hover', 'rgba(30, 70, 70, 0.95)');
+                    root.style.setProperty('--text-color', '#ffffff');
+                    root.style.setProperty('--shadow-color', 'rgba(0, 255, 157, 0.3)');
+                    root.style.setProperty('--header-bg', 'rgba(10, 26, 26, 0.98)');
+                    root.style.setProperty('--nav-bg', 'rgba(10, 26, 26, 0.98)');
+                    root.style.setProperty('--footer-bg', 'linear-gradient(90deg, #000000, #00cc7d, #00ff9d)');
+                    break;
+                case 'purple':
+                    root.style.setProperty('--primary-color', '#8a2be2');
+                    root.style.setProperty('--primary-dark', '#6a1cb0');
+                    root.style.setProperty('--primary-light', '#9d45e5');
+                    root.style.setProperty('--accent-color', '#ff00e5');
+                    root.style.setProperty('--accent-color-2', '#ff8c00');
+                    root.style.setProperty('--bg-color', '#1a0a2a');
+                    root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #1a0a2a, #2a0a4a, #3a0a6a)');
+                    root.style.setProperty('--card-bg', 'rgba(40, 16, 70, 0.9)');
+                    root.style.setProperty('--card-hover', 'rgba(60, 30, 90, 0.95)');
+                    root.style.setProperty('--text-color', '#ffffff');
+                    root.style.setProperty('--shadow-color', 'rgba(138, 43, 226, 0.3)');
+                    root.style.setProperty('--header-bg', 'rgba(26, 10, 42, 0.98)');
+                    root.style.setProperty('--nav-bg', 'rgba(26, 10, 42, 0.98)');
+                    root.style.setProperty('--footer-bg', 'linear-gradient(90deg, #000000, #6a1cb0, #8a2be2)');
+                    break;
+                case 'gold':
+                    root.style.setProperty('--primary-color', '#ffd700');
+                    root.style.setProperty('--primary-dark', '#ccac00');
+                    root.style.setProperty('--primary-light', '#ffe766');
+                    root.style.setProperty('--accent-color', '#ff8c00');
+                    root.style.setProperty('--accent-color-2', '#ff0080');
+                    root.style.setProperty('--bg-color', '#1a1a0a');
+                    root.style.setProperty('--bg-gradient', 'linear-gradient(135deg, #1a1a0a, #2a2a0a, #3a3a0a)');
+                    root.style.setProperty('--card-bg', 'rgba(40, 40, 16, 0.9)');
+                    root.style.setProperty('--card-hover', 'rgba(70, 70, 30, 0.95)');
+                    root.style.setProperty('--text-color', '#ffffff');
+                    root.style.setProperty('--shadow-color', 'rgba(255, 215, 0, 0.3)');
+                    root.style.setProperty('--header-bg', 'rgba(26, 26, 10, 0.98)');
+                    root.style.setProperty('--nav-bg', 'rgba(26, 26, 10, 0.98)');
+                    root.style.setProperty('--footer-bg', 'linear-gradient(90deg, #000000, #ccac00, #ffd700)');
+                    break;
+            }
+            
+            // حفظ الثيم المختار في localStorage
+            localStorage.setItem('selectedTheme', theme);
+        }
+
+        // تحميل الثيم المحفوظ عند فتح الصفحة
+        function loadSavedTheme() {
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme) {
+                changeTheme(savedTheme);
+            }
+        }
+
+        // تغيير الثيم عند اختيار لون
+        themeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const theme = this.getAttribute('data-theme');
+                changeTheme(theme);
+                themeOptions.style.display = 'none';
+            });
+        });
+
+        // تحميل الثيم المحفوظ عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSavedTheme();
+            
+            // تحديث عدد المستخدمين المتصلين عشوائياً
+            function updateOnlineCount() {
+                const onlineCount = document.getElementById('onlineCount');
+                const min = 4000;
+                const max = 10000;
+                const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
+                onlineCount.textContent = randomCount.toLocaleString();
+            }
+            
+            // تحديث العدد كل 5 ثوانٍ
+            setInterval(updateOnlineCount, 5000);
+            updateOnlineCount();
+            
+            // تفعيل العنصر النشط في شريط التنقل السفلي
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
