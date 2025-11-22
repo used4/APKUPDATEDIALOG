@@ -4,7 +4,7 @@
   "version": "9",
   "headline": "•تطبيق يجمع لك كل القنوات الرياضية والعراقية مجانا، بدون إعلانات وبدون اشتراك - كل شي بمكان واحد",
   "description": "•                                  𝗝𝗼𝗶𝗻 𝘁𝗵𝗲 𝗧𝗲𝗹𝗲𝗴𝗿𝗮𝗺 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 ",
-  "force": false,
+  "force": true,
   "minVersion": "",
   "credit": "hiqq3",
   "features": [
@@ -20,8 +20,8 @@
     "minutes": 1
   },
   "update": {
-    "text": "اضغط هنا للتحديث",
-    "url": "https://t.me/ViewXTV/16"
+    "text": "🔴اضغط هنا للتحديث",
+    "url": "https://t.me/ViewXTV"
   },
   "colors": {
     "bgStart": "#000000",
